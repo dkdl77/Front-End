@@ -39,18 +39,18 @@ const characterGifs = [
 
 // potion GIF 경로
 const potionGifs = [
-  require('../../assets/potion/potion1.gif'),
-  require('../../assets/potion/potion2.gif'),
-  require('../../assets/potion/potion3.gif'),
-  require('../../assets/potion/potion4.gif'),
-  require('../../assets/potion/potion5.gif'),
-  require('../../assets/potion/potion6.gif'),
-  require('../../assets/potion/potion7.gif'),
-  require('../../assets/potion/potion8.gif'),
-  require('../../assets/potion/potion9.gif'),
-  require('../../assets/potion/potion10.gif'),
-  require('../../assets/potion/potion11.gif'),
-  require('../../assets/potion/potion12.gif'),
+  require('../../assets/potion/stage1_potion.gif'),
+  require('../../assets/potion/stage2_potion.gif'),
+  require('../../assets/potion/stage3_potion.gif'),
+  require('../../assets/potion/stage4_potion.gif'),
+  require('../../assets/potion/stage5_potion.gif'),
+  require('../../assets/potion/stage6_potion.gif'),
+  require('../../assets/potion/stage7_potion.gif'),
+  require('../../assets/potion/stage8_potion.gif'),
+  require('../../assets/potion/stage9_potion.gif'),
+  require('../../assets/potion/stage10_potion.gif'),
+  require('../../assets/potion/stage11_potion.gif'),
+  require('../../assets/potion/stage12_potion.gif'),
 ];
 
 const { width, height } = Dimensions.get('window');
