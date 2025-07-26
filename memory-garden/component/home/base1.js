@@ -37,6 +37,22 @@ const characterGifs = [
   require('../../assets/character/stage12.gif'),
 ];
 
+// potion GIF 경로
+const potionGifs = [
+  require('../../assets/potion/potion1.gif'),
+  require('../../assets/potion/potion2.gif'),
+  require('../../assets/potion/potion3.gif'),
+  require('../../assets/potion/potion4.gif'),
+  require('../../assets/potion/potion5.gif'),
+  require('../../assets/potion/potion6.gif'),
+  require('../../assets/potion/potion7.gif'),
+  require('../../assets/potion/potion8.gif'),
+  require('../../assets/potion/potion9.gif'),
+  require('../../assets/potion/potion10.gif'),
+  require('../../assets/potion/potion11.gif'),
+  require('../../assets/potion/potion12.gif'),
+];
+
 const { width, height } = Dimensions.get('window');
 
 export default function HomePage({ navigation }) {
@@ -46,7 +62,14 @@ export default function HomePage({ navigation }) {
   const [collectionModalVisible, setCollectionModalVisible] = useState(false);
   const [easterEggVisible, setEasterEggVisible] = useState(false);
   const [easterEggMessage, setEasterEggMessage] = useState('');
+  // GIF 상태 추가 (초기값은 현재 스테이지 캐릭터 GIF)
+  const [currentCharacterGif, setCurrentCharacterGif] = useState(CharacterGifs[userInfo.stage]);
 
+  // userInfo.stage 바뀌면 캐릭터 GIF도 바꾸기
+  useEffect(() => {
+    setCurrentCharacterGif(characterGifs[userInfo.stage]);
+  }, [userInfo.stage]);
+  
   // 12개 전구의 고정 위치 (아치형 배경에 맞게 수동 조정)
   const lightPositions = [
     { x: width * 0.10, y: height * 0.45 },  // 1번 전구
@@ -165,9 +188,18 @@ export default function HomePage({ navigation }) {
   const handlePotionUse = () => {
     const result = usePotion();
     if (result.success) {
+      // 물약 먹는 GIF로 변경
+      setCurrentCharacterGif(potionGif);
+
+      // 2초 후 원래 캐릭터 GIF
+      SetTimeout(() => {
+        setCurrentCharacterGif(characterGifs[userInfo.stage]);
+      }, 2000);
+      
       const message = getRandomEasterEggMessage();
       setEasterEggMessage(message);
       setEasterEggVisible(true);
+      
       Alert.alert(
         '포션 사용',
         `포션을 마셨습니다! (남은 포션: ${result.remainingPotion}개)\n현재 세트에서 사용한 포션: ${result.potionUsedInSet}/4개`
